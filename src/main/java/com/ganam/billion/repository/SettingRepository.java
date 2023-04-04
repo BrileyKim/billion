@@ -14,4 +14,7 @@ public interface SettingRepository extends JpaRepository<Setting,String> {
     @Query(value="SELECT s FROM setting s WHERE setting_key = :setting_key")
     Optional<Setting> findSettingValue(@Param("setting_key") String setting_key);
 
+
+
+
 }

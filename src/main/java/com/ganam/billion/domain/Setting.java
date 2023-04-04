@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Setting {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="setting_key")
     private String setting_key;
 

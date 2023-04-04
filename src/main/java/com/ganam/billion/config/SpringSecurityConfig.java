@@ -26,7 +26,7 @@ public class SpringSecurityConfig {
                         .loginProcessingUrl("/login")
                         .usernameParameter("phone")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/status/success",true)
+                        .defaultSuccessUrl("/view/dashboard",true)
                         .failureUrl("/status/fail")
                         .permitAll()
                 )

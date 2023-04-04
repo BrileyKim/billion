@@ -1,12 +1,15 @@
 package com.ganam.billion.service;
 
 import com.ganam.billion.domain.Setting;
+import com.ganam.billion.dto.UserDto;
 import com.ganam.billion.repository.SettingRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class RegisterUserService {
 
     private final PasswordEncoder passwordEncoder;
@@ -18,13 +21,15 @@ public class RegisterUserService {
         this.settingRepository = settingRepository;
     }
 
-    public void join(String phone, String password){
+    public void join(UserDto dto){
 
-        Setting s1 = Setting.createSetting("phone",phone);
-        Setting s2 = Setting.createPassword(password, passwordEncoder);
+        Setting s1 = Setting.createSetting("phone",dto.getPhone());
+        Setting s2 = Setting.createPassword(dto.getPassword(), passwordEncoder);
+        Setting s3 = Setting.createSetting("nickname",dto.getNickname());
 
         settingRepository.save(s1);
         settingRepository.save(s2);
+        settingRepository.save(s3);
     }
 
 
